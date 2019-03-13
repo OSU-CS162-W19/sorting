@@ -18,6 +18,7 @@ void selection_sort(std::vector<T>& array) {
     int min_idx = i;
     for (int j = i + 1; j < array.size(); j++) {
       // Find minimum value
+      if (array[j] < array[min_idx]) {
         min_idx = j;
       }
     }
@@ -26,6 +27,17 @@ void selection_sort(std::vector<T>& array) {
 
   }
 
+}
+
+template <class T>
+void insertion_sort(std::vector<T>& array) {
+  for (int i = 1; i < array.size(); i++) {
+    int j = i;
+    while (j > 0 && array[j] < array[j-1]) {
+      swap(array[j], array[j-1]);
+      j--;
+    }
+  }
 }
 
 
@@ -42,7 +54,8 @@ int main() {
   std::cout << std::endl;
 
   // Sort the data...
-  selection_sort(vec);
+  // selection_sort(vec);
+  insertion_sort(vec);
 
   std::cout << "After sorting: ";
   for (int i = 0; i < vec.size(); i++) {
